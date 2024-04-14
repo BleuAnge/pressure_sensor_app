@@ -11,6 +11,8 @@ import CoreMotion
     let METHOD_CHANNEL_NAME = "com.example.pressureSensorApp/method"
     let EVENT_CHANNEL_NAME = "com.example.pressureSensorApp/event"
     
+    let pressureStreamHandler = PressureStreamHandler()
+      
     let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
       
     let methodChannel = FlutterMethodChannel(
@@ -28,8 +30,20 @@ import CoreMotion
           result(FlutterMethodNotImplemented)
       }
     })
+      
+    let eventChannel = FlutterEventChannel(
+        name: EVENT_CHANNEL_NAME,
+        binaryMessenger: controller.binaryMessenger
+    )
+      
+    eventChannel.setStreamHandler(
+        pressureStreamHandler
+    )
 
     GeneratedPluginRegistrant.register(with: self)
-    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+    return super.application(
+        application,
+        didFinishLaunchingWithOptions: launchOptions
+    )
   }
 }
