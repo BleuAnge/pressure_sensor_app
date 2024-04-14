@@ -1,0 +1,4 @@
+#Sun Apr 14 11:55:58 PST 2024
+base.0=/Users/jared/Documents/GitHub/pressure_sensor_app/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
